@@ -65,6 +65,25 @@ instruction to your `CLAUDE.md`:
 
 The plugin also provides the ty LSP. It requires `uvx` to be available.
 
+## Opencode Skills
+
+This repository also includes opencode-compatible skill files in the `opencode-skills/` directory:
+
+- **using-uv** – Guide for using uv, the Python package and project manager
+- **using-ruff** – Guide for using ruff, the Python linter and formatter  
+- **using-ty** – Guide for using ty, the Python type checker
+
+These skills follow the opencode skill format (YAML frontmatter with `name` and `description`) and can be used with opencode agents. To use them, copy the skill files to your opencode skills directory:
+
+```bash
+# For personal skills
+cp opencode-skills/*.md ~/.config/opencode/skills/
+
+# For project-specific skills
+mkdir -p .opencode/skills/
+cp opencode-skills/*.md .opencode/skills/
+```
+
 ## License
 
 Licensed under either of:
