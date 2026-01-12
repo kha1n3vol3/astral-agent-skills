@@ -73,16 +73,31 @@ This repository also includes opencode-compatible skill files in the `opencode-s
 - **using-ruff** – Guide for using ruff, the Python linter and formatter  
 - **using-ty** – Guide for using ty, the Python type checker
 
-These skills follow the opencode skill format (YAML frontmatter with `name` and `description`) and can be used with opencode agents. To use them, copy the skill files to your opencode skills directory:
+These skills follow the opencode skill format (YAML frontmatter with `name` and `description`) and can be used with opencode agents. To use them, copy the skill files to your opencode skills directory and organize them into skill directories:
 
 ```bash
 # For personal skills
+mkdir -p ~/.config/opencode/skills/
 cp opencode-skills/*.md ~/.config/opencode/skills/
+
+# Reorganize into skill directory structure
+cd ~/.config/opencode/skills/
+for skill in using-uv using-ruff using-ty; do
+  mkdir -p $skill
+  mv $skill.md $skill/SKILL.md 2>/dev/null
+done
 
 # For project-specific skills
 mkdir -p .opencode/skills/
 cp opencode-skills/*.md .opencode/skills/
+cd .opencode/skills/
+for skill in using-uv using-ruff using-ty; do
+  mkdir -p $skill
+  mv $skill.md $skill/SKILL.md 2>/dev/null
+done
 ```
+
+**Note:** After adding skills, restart opencode for them to be detected. Use `find_skills` to verify availability and `use_skill` to load them.
 
 ## License
 
